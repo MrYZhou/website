@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>用户注册</title>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+	transition: all .2s;
+	border: none;
+}
+
+.photo li {
+	float: left;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 480px;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	overflow: hidden;
+}
+
+.photo a {
+	display: block;
+	height: 100%;
+}
+
+.photo a img {
+	/*搭配fix之后用百分比设置高度*/
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 480px;
+	height: 100%;
+}
+
+.contain {
+	position: relative;
+	height: 100%;
+	margin-left: 480px;
+	margin: 1px solid green;
+	overflow: hidden;
+}
+
+.content-wrap {
+	width: 282px;
+	margin: 100px auto;
+}
+
+input {
+	display: block;
+	width: 100px;
+	height: 20px;
+	margin-bottom: 20px;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+}
+/* input:nth-child(1){
+			
+		}
+		input:nth-child(2){
+
+		}
+		input:nth-child(3){
+	
+		} */
+h1 {
+	font-size: 48px;
+	font-weight: 400;
+	margin-bottom: 20px;
+}
+
+h1 ~span{
+	display: inline-block;
+	font-size: 28px;
+	margin-bottom: 50px;
+}
+
+input {
+	width: 280px;
+	height: 50px;
+	margin-bottom: 40px;
+	border-radius: 5px;
+	text-indent: 20px;
+}
+
+input:last-child {
+	width: 282px;
+	background-color: #f66;
+}
+
+input, img {
+	box-shadow: 2px 2px 5px #888888;
+}
+</style>
+</head>
+
+<body>
+	<div class="photo">
+		<ul>
+			<li><a href=""><img src="images\register\p1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images\register\p2.jpg" alt=""></a></li>
+			<li><a href=""><img src="images\register\p3.jpg" alt=""></a></li>
+		</ul>
+	</div>
+	<div class="contain">
+		<div class="content-wrap">
+			<h1>欢迎注册 </h1>
+			<span>welcome to register</span>
+			<form action="register" method="POST">
+				<input type="text" name="name" id="" placeholder="用户名/账号"> <input
+					type="password" name="password" id="" placeholder="密码"> <input
+					type="submit" value="立即注册">
+			</form>
+		</div>
+	</div>
+	
+</body>
+<script>
+	
+	var imgs = document.querySelectorAll(".photo img"),
+		len = imgs.length;
+	lastindex = 0;
+
+	var getStyle = (ele) => {
+		return ele.currentStyle || getComputedStyle(ele)
+	}
+	var startAnimation = () => {
+		if (lastindex == len - 1) {
+
+			animation(imgs[lastindex], "opacity", 0, 1 / 60)
+
+			animation(imgs[0], "opacity", 1, 1 / 60)
+			lastindex = 0;
+		} else {
+
+			animation(imgs[lastindex], "opacity", 0, 1 / 60)
+
+			animation(imgs[lastindex + 1], "opacity", 1, 1 / 60)
+			lastindex++
+		}
+	}
+	animation = (ele, attr, target, step) => {
+		var startValue = parseFloat(getStyle(ele)[attr])
+		target = parseFloat(target)
+		step = parseFloat(step)
+		direction = startValue > target
+		if (direction) { step = -step }
+		run = () => {
+			startValue += step
+			if (direction ? startValue <= target : startValue >= target) {
+				startValue = target
+			} else {
+				requestAnimationFrame(run)
+			}
+			ele.style[attr] = startValue
+		}
+		requestAnimationFrame(run)
+	}
+
+	let aid = setInterval(startAnimation, 3000)
+
+
+	for (let i = 0; i < len; i++) {
+
+		imgs[i].onmouseover = function () {
+			clearInterval(aid);
+			console.log("移入stop");
+		}
+		imgs[i].onmouseout = () => {
+			aid = setInterval(startAnimation, 3000)
+			console.log("移出开始");
+		}
+	}
+
+
+
+	var photoW = document.querySelectorAll('img'),
+		leftM = document.getElementsByClassName('contain')[0],
+		photoWrap = document.getElementsByClassName('photo')[0];
+
+	//console.log(photoWrap);
+
+	// 获取窗口宽度并适应布局
+
+
+	setInterval(function () {
+		
+	//判断输入为空否
+		
+	
+		if (window.innerWidth)
+			winWidth = window.innerWidth;
+		else if ((document.body) && (document.body.clientWidth))
+			winWidth = document.body.clientWidth;
+
+
+		leftM.style.width = winWidth - photoW[0].style.width
+
+		//console.log(winWidth);
+		if (winWidth < 920 && winWidth > 540) {
+			//	console.log(photoW);
+			photoWrap.style.display = "block"
+			len = photoW.length;
+			for (let index = 0; index < photoW.length; index++) {
+				var element = photoW[index];
+				//console.log(element.style.Width);
+				element.style.width = "240px";
+				console.log(element.style.width);
+				leftM.style.marginLeft = "240px";
+			}
+		} else if (winWidth < 540) {
+			console.log(photoWrap.style.display);
+			console.log(1);
+
+			photoWrap.style.display = "none"
+			leftM.style.marginLeft = "0";
+
+		}
+		else {
+			photoWrap.style.display = "block"
+			leftM.style.marginLeft = "480px";
+			for (let index = 0; index < photoW.length; index++) {
+				var element = photoW[index];
+				//console.log(element.style.Width);
+				element.style.width = "480px";
+				//console.log(element.style.width);
+			}
+		}
+		
+	}, 666);
+	
+	var inputs = document.querySelectorAll('input'),info;
+	inputs[2].onclick = function () {
+		(info = inputs[0].value == '' || inputs[1].value == '' ? false : true) == false ? alert('帐号或者密码不能为空') : null;
+		return info;
+	};
+	
+	
+</script>
+
+</html>
