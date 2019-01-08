@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+
+<script src="jQuery.js"></script>
+<script src="data.js"></script>
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+		animation:all .5s; 
+	}
+	ul{
+		list-style: none;
+	}
+	body{
+		overflow-x: hidden;
+	}
+	a{
+		text-decoration: none;
+		color: #7a7e8a;
+	}
+	.wrap{
+		display:block;
+		width: 100%;
+		height: 100vh;
+		background-color: #f66;
+	}
+	.wrap .circlewrap p{
+		z-index: 999;
+		position: fixed;
+		width: 100px;
+		height: 100px;
+		border:15px solid red;
+		border-left-color:green;
+		border-right-color:skyblue;
+		border-bottom-color:purple ;
+		border-radius:50%;
+		transform:rotate(45deg);
+		-ms-transform:rotate(45deg); 	/* IE 9 */
+		-moz-transform:rotate(45deg); 	/* Firefox */
+		-webkit-transform:rotate(45deg); /* Safari å’Œ Chrome */
+		-o-transform:rotate(45deg);	
+	}
+	.circlewrap span{
+		position: fixed;
+	}
+	img{
+		width: 100px;
+		height: 100px;
+		border-radius:50%;
+	}
+	/* ?? */
+	
+	.leftbar{
+		width: 220px;
+		height: 100vh;
+		background-color: #4E546B;
+	}
+	
+	.main > div{
+		float: left;
+	}
+	.search form{
+		
+		margin-top:20px;
+		text-align: center;
+	}
+	.search input{
+		
+		width: 140px; 
+		height: 20px;
+		border:1px solid #eee;
+		border-radius:2px;
+		text-indent:24px;
+		background-color: #efefef;
+		
+	}
+	form:before{
+		z-index: 0;
+		position: absolute;
+		top: 22px;
+		left: 42px;
+		width: 16px;
+		height: 16px;
+		content: ' ';
+		color: transparent;
+		display: inline-block;
+		background-repeat: no-repeat;
+		background: url('x.png') 0px 0px;
+	}
+
+	.item{
+		position: relative;
+		margin-top:30px;
+	}
+	.item li{
+		color:#7a7e8a;
+		line-height: 40px;
+		cursor: pointer;
+		
+	}
+	
+	i{
+		display: inline-block;
+		width: 40px;
+		height: 18px;
+		background: url('x.png') no-repeat 20px -35px;
+	}
+	.item span{
+		padding-left: 16px;
+	}
+	.item div:hover{
+		color:#fff!important;
+	}
+	
+	.item p{
+		display: none;
+	}
+	.item p span{
+		display: block;
+	}
+	
+	.item p span:hover{
+		border-left:4px solid rgb(182, 67, 176);
+	}
+	.item a{
+		display: inline-block;
+		width: 220px;
+		
+	}
+	.item a:hover{
+		color: aliceblue;
+	}
+	.mainbar{
+		background: url('senlin.jpg') no-repeat center/100%;
+	}
+	.mainbar .content{
+		display: none;
+		
+		width: 760px;
+		height: 370px;
+		margin: 50px auto;
+		padding: 30px ;
+		border-radius: 5px;
+		background-color: #ffe793;
+		opacity:.5 ;
+		box-shadow: 5px 7px 5px #000;
+
+	}
+	/* .mainbar .content .text{
+		width: 200px;
+		height: 200px;
+		
+		border:1px solid red;
+	} */
+	.addtext{
+		display: none;
+		text-align: center;
+	}
+	.addtext textarea{
+		height: 60px;
+		
+	}
+	.addtext button{
+		display: inline-block;
+		font-size: 12px;
+		width: 40px;
+		height: 40px;
+		/* padding: 10px; */
+		border-radius: 50%;
+		border:3px solid #1abe9b;
+		margin-left: 20px;
+		margin-bottom: 11px;
+		background-color: #eccf96;
+		vertical-align: bottom;
+	}
+	hr{
+		margin: 20px;
+		height: 4px;
+		background-color: purple;
+	}
+</style>
+
+<body>
+	<div class="wrap">
+		<div class="circlewrap">
+			<p></p>
+			<span><img src="bg.png" alt=""></span>
+		</div>
+	</div>
+	<div class='main'>
+		<div class="leftbar">
+			<div class="search">
+				<form action="" style="display:none;">
+					<input type="text" placeholder="search here">
+				</form>
+			</div>
+			<div class="item">
+				<ul>
+					<li>
+						<div><a href="myhome.html"><i style="background-position-y: -20px;"></i><span>MY HOME</span></a></a></div>
+					</li>
+					<li>
+						<div><i></i><span>效果</span></div>
+						<p>
+							<span>slide</span>
+							<span>animate</span>
+						</p>
+					</li>
+					<li>
+						<div><i></i><span>事件</span></div>
+						<p>
+							<span>mouse</span>
+							<span>on</span>
+						</p>
+					</li>
+					<li>
+						<div><i></i><span>css</span></div>
+						<p>
+							<span>css方法</span>
+							<span>offset</span>
+							<span>inner</span>
+						</p>
+					</li>
+					<li>
+						<div><i></i><span>学习小结</span></div>
+						<p>
+							<span>js</span>
+							<span>h5</span>
+						</p>
+					</li>
+					<li>
+						<div><i></i><span>规划</span></div>
+						<p>
+							<span>近期</span>
+							<span>长期</span>
+						</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="mainbar">
+			<div class="content">
+				
+			</div>
+			<div class="addtext">
+
+					<textarea name="" id="" cols="30" rows="10"></textarea>
+					<button>add</button>
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+	
+	(function () {
+		localStorage.setItem("isloaded",1);
+		// localStorage.clear()
+		var i = 1, timer, arr = [], a,panel;
+		//??????
+		rotate()
+		timer = setInterval(() => {
+			rotate()
+		}, 500);
+		setTimeout(() => {
+			$('.wrap').css('display', 'none')
+			$('form').css('display', 'block')
+			clearInterval(timer);
+		}, 3000);
+
+		//??
+		//????
+		//右边布局
+		$('.mainbar').css({
+			width: function () {
+				return cal($(window).innerWidth(), $('.leftbar').innerWidth());
+			},
+			height: function () {
+				return $('.leftbar').innerHeight() + "px";
+			}
+		})
+		//mouse背景色显示
+		$('.item li').on("mouseover", function () {
+
+			$(this).children('div').css({ "background-color": "#ff404b" })
+		},
+		)
+		$('.item li').on("mouseout", function () {
+
+			$(this).children('div').css({ "background-color": "#4e546b" })
+		},
+		)
+
+		//移入子菜单背景色显示
+		$('.item p').on("mouseover", function () {
+			//console.log($(this).parent());
+
+			$(this).parent().children("div").css({ "background-color": "#ff404b", "color": "white" })
+		},
+		)
+		$('.item p').on("mouseout", function () {
+
+			$(this).parent().children("div").css({ "background-color": "#4e546b", "color": "#7a7e8a" })
+		},
+		)
+
+
+		//slide子菜单显示
+		for (var i = 1; i <= 5; i++) {
+			((function (i) {
+
+				$('.item ul div').eq(i).on('click', function () {
+					$('.item p').eq(i - 1).slideDown("slow");
+					hid(i - 1);
+				})
+			})(i))
+		}
+		//data获取
+		for(var i=1;i<=localStorage.total;i++){
+			((function(i){
+				$('.item li p span').eq(i-1).on('click', function () {
+					$('.content').fadeIn(1500);
+					$('.addtext').fadeIn(1500);
+					$('.content').html(localStorage.getItem(`${i}`))
+					panel=i;
+					
+				})
+			})(i))
+		}
+		
+		//data添加
+		$('.addtext button').on('click',function(){
+			add(panel)
+			$('textarea').val('')
+		})
+		//method
+		function add(p){
+			var data=$('textarea').val();
+			 console.log(data);
+			localStorage[p]=localStorage[p]+"<hr>"+data;
+			//localStorage.setItem(p+"",localStorage.getItem(p+"")+"\n"+data) ;
+			console.log(localStorage[p]);
+			 
+		}
+		function cal(a, b) {
+			//console.log(a,b)
+			return a - b + "px"
+		}
+
+		function rotate() {
+			$('.circlewrap p').css("transform", "rotate(" + i * 49 + "deg)");
+			i++;
+			i = i % 3;
+
+			// $('p').css("left",$(window).innerWidth()/2-65)
+			// $('p').css("top",$(window).innerHeight()/2-65)
+			// $('span').css("left",$(window).innerWidth()/2-50)
+			// $('span').css("top",$(window).innerHeight()/2-50)
+
+			$('.circlewrap p').css("left", $(window).innerWidth() / 2 - 100)
+			$('.circlewrap p').css("top", $(window).innerHeight() / 2 - 100)
+			$('.circlewrap span').css("left", $(window).innerWidth() / 2 - 85)
+			$('.circlewrap span').css("top", $(window).innerHeight() / 2 - 85)
+		}
+		function hid(la) {
+			arr.push(la);
+			if (arr.length == 2) {
+				a = arr.shift();
+				if (a === la) {
+					arr.shift();
+				}
+				$('.item p').eq(a).slideUp("quick")
+			}
+		}
+
+
+	}())
+</script>
+
+</html>
